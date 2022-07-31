@@ -1,0 +1,69 @@
+&Equations
+MaterialFileName = '../material.yaml'
+/
+
+&IniCondition                        ! no initial condition
+/
+
+&Boundaries                          ! activate boundary conditions:
+BC_fs = 1                               ! Free surface
+BC_of = 1                               ! Absorbing boundaries
+/
+
+&SourceType
+Type = 42
+FileName = 'source.nrf'
+/
+
+&SpongeLayer
+/
+
+&Elementwise
+printIntervalCriterion = 2
+printtimeinterval_sec = 0.5
+OutputMask = 1 1 1 1 1 1 1 1 1 1 1 
+refinement = 3
+refinement_strategy=2
+/
+
+&MeshNml
+MeshFile = '/hppfs/scratch/0A/ru94tiz3/Helsinki/arraytest/mesh/meshnew'              ! Name of mesh file
+meshgenerator = 'PUML'           ! Name of meshgenerator (format)
+/
+
+&Discretization
+Material = 1                         ! Material order
+CFL = 0.5                            ! CFL number (<=1.0)
+FixTimeStep = 5                      ! Manualy chosen minimum time
+ClusteredLTS = 2
+/
+
+&Output
+OutputFile = 'output_o4/pointtest'   
+iOutputMask = 1 1 1 1 1 1 1 1 1      ! Variables ouptut
+iOutputMaskMaterial = 1 1 1          ! Material output
+Format = 10                           ! Format (0=IDL, 1=TECPLOT, 2=IBM DX, 4=GiD))
+TimeInterval = 0.1                   ! Index of printed info at time
+printIntervalCriterion = 2           ! Criterion for index of printed info: 1=timesteps,2=time,3=timesteps+time
+!pickdt = 0.001                       ! Pickpoint Sampling
+pickdt = 0.005
+pickDtType = 1                       ! Pickpoint Type
+nRecordPoints = 61                    ! number of Record points which are read from file
+RFileName = '../receivers.dat'          ! Record Points in extra file
+
+! Free surface output
+!SurfaceOutput = 1
+!SurfaceOutputRefinement = 1
+!SurfaceOutputInterval = 0.1
+/
+/
+
+&AbortCriteria
+EndTime = 8.0
+/
+
+&Analysis
+/
+
+&Debugging
+/
