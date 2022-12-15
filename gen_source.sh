@@ -1,15 +1,15 @@
 #!/bin/bash
 
 ####strike##for i in {0 15 30 45 60 75 90 105 120 135 150 165 180}
-for i in {0..13} ##{0..13}  
+for i in {0..23} ##{0..13} 0-345 degrees 
 do
 	##echo $(($i*15))
     ####dip##for j in {10 20 30 40 50 60 70 80 90}
-        for j in {1..9} ##{1..9}
+        for j in {1..9} ##{1..9} 10-90 degrees
         do
             ##echo $(($j*10))
             ####rake##for k in {0 15 30 45 60 75 90 105 120 135 150 165 180}
-                for k in {0..13} ##{0..13}
+                for k in {0..13} ##{0..13} 0-195 degrees
                 do
                     ##echo $(($k*15))
                     mkdir strike$(($i*15))_dip$(($j*10))_rake$(($k*15))
